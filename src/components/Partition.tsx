@@ -42,7 +42,17 @@ function Partition() {
 
   partitionLayout(root);
 
-  console.log(root.descendants());
+  const nodes = root.descendants();
+  const list: any = [];
+  const maxDepth = Math.max(...nodes.map(node => node.depth));
+
+  nodes.forEach(node => {
+    const newNode = node as HierarchyRectangularNode<any>;
+    list[newNode.depth] = {
+      y0: newNode.y0,
+      y1: newNode.y1
+    }
+  });
 
   return (
     <svg
@@ -51,17 +61,19 @@ function Partition() {
       height={height + padding}
     >
       <g transform={`translate(${padding / 2}, ${padding / 2})`}>
-        {root.descendants().map((node, index) => {
+        {nodes.map((node, index) => {
           const newNode = node as HierarchyRectangularNode<any>;
+          const top = list[maxDepth - newNode.depth];
+
           return (
             <rect
               key={index}
               fill="white"
               stroke="black"
               x={newNode.x0}
-              y={newNode.y0}
+              y={top.y0}
               width={newNode.x1 - newNode.x0}
-              height={newNode.y1 - newNode.y0}
+              height={top.y1 - top.y0}
             ></rect>
           );
         })}
