@@ -40,7 +40,7 @@ function Tree() {
   const root = hierarchy(data);
 
   const treeLayout = tree();
-  treeLayout.size([width, height]);
+  treeLayout.size([height, width]);
   treeLayout(root);
 
   return (
@@ -57,10 +57,10 @@ function Tree() {
             <line
               key={index}
               stroke="black"
-              x1={source.x}
-              x2={target.x}
-              y1={source.y}
-              y2={target.y}
+              x1={source.y}
+              x2={target.y}
+              y1={source.x}
+              y2={target.x}
             ></line>
           );
         })}
@@ -70,8 +70,8 @@ function Tree() {
           return (
             <circle
               key={index}
-              cx={newNode.x}
-              cy={newNode.y}
+              cx={newNode.y}
+              cy={newNode.x}
               r={4}
               fill="black"
             ></circle>
