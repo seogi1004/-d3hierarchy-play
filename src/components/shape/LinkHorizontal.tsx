@@ -60,6 +60,7 @@ function Tree() {
 
           return (
             <path
+              key={index}
               fill="none"
               stroke="black"
               d={linkFunc(defaultLinkObject) || ''}

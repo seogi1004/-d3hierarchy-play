@@ -3,11 +3,14 @@ import Partition from './components/Partition';
 import Treemap from './components/Treemap';
 import Tree from './components/Tree';
 import LinkHorizontal from './components/shape/LinkHorizontal';
+import Canvas from './components/shape/Canvas';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
+      <Canvas></Canvas>
+      <br />
       <LinkHorizontal></LinkHorizontal>
       <br />
       <Tree></Tree>
